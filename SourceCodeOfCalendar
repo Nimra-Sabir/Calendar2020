@@ -1,0 +1,147 @@
+#include <iostream>
+using namespace std;
+
+   /*Calendar 2020*/
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
+class Months{
+	private:
+		const char *months[12]={"January","February","March","April","May","June","July","August","September","October","November","December"};
+		int m,mon;
+		int dow=0;
+		int year;
+		int day=1;
+		int t[12] = { 0, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4 };
+		int c=0;
+public:	
+	void get()
+		{
+	    	cout<<"Enter Year: "<<endl;
+	        cin>>year;
+	        cout<<"Enter Month Number: "<<endl;
+	        cin>>mon;
+	        m=mon;
+		}
+void firstDayOfMonth()
+ {
+    
+    year -= mon < 3;
+    dow = ( year + year/4 - year/100 + year/400 + t[m-1] + day) % 7;
+    
+	}  
+	void show()
+		{
+			cout<<"\n\t************Happy New Year*************";
+	    	cout<<"\n\t---------------------------------------";
+	    	      switch(m)
+				    {
+				  	case 1:
+	                  { 
+					    cout<<"\n\t\t\t"<<months[0];
+						m=31;
+						break;
+						}
+	                case 2:
+	                  {
+					    cout<<"\n\t\t\t"<<months[1];
+                          if(year % 4==0)
+						     m=28;
+						  else
+						     m=29;
+					  }	     
+					break;	      
+	                case 3:
+	                  {
+					    cout<<"\n\t\t\t"<<months[2];
+						m=31;
+						break;
+						}
+					case 4:
+	                    {
+						cout<<"\n\t\t\t"<<months[3];
+						m=30;
+						break;
+						}
+					case 5:
+	                    {
+						cout<<"\n\t\t\t"<<months[4];
+						m=31;
+						break;
+						}
+					case 6:
+	                    {
+						cout<<"\n\t\t\t"<<months[5];
+						m=30;
+						break;
+						}
+					case 7:
+	                    {
+						cout<<"\n\t\t\t"<<months[6];
+						m=31;
+						break;
+						}
+					case 8:
+	                    {
+						cout<<"\n\t\t\t"<<months[7]; 
+						m=31;
+						break;
+						} 
+	    	  		case 9:
+	                   {
+					    cout<<"\n\t\t\t"<<months[8];
+						m=30;
+						break;
+						}
+	                case 10:
+	                  {
+					    cout<<"\n\t\t\t"<<months[9];
+						m=31;
+						break;
+						}
+	                case 11:
+	                  {
+					   cout<<"\n\t\t\t"<<months[10];
+						m=30;
+						break;
+						}
+	                case 12:
+	                  {
+					  cout<<"\n\t\t\t"<<months[11];
+						m=31;
+						break;
+						}
+				  }
+			  
+	cout<<"\n\t---------------------------------------\n";	  
+	cout<<"\n\tSun\tMon\tTue\tWed\tThu\tFri\tSat\n\n\t";
+	
+	for (int spaces=0; spaces < dow; spaces++)
+	{
+        cout << "  \t " ;
+		c++;
+	}
+	for(int k=1;k<=m;k++)
+		{
+		  
+		  if(k<10)	
+		  cout<<"0";
+		  cout<<k<<"\t ";
+		  c++;
+		  if(c%7==0)
+			  cout<<endl<<"\t";
+		}
+			
+	}
+};
+
+int main()
+ {
+    system(" color f0");
+	Months months;          //Object of a class 
+	months.get();
+	months.firstDayOfMonth();
+	months.show();
+	
+	
+	return 0;
+}
